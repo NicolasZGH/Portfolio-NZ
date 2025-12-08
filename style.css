@@ -154,6 +154,12 @@ body::after {
     box-shadow: 0 6px 20px rgba(0, 191, 255, 0.4);
 }
 
+#inicio,
+#proyectos,
+#contacto {
+    scroll-margin-top: 90px;
+}
+
 /* Hamburger menu */
 .navbar-toggle {
     display: none;
@@ -279,6 +285,7 @@ header {
     color: white;
     position: relative;
     z-index: 1;
+    padding-top: 15px;
 }
 
 h1 {
@@ -387,7 +394,7 @@ h1 {
 }
 
 .project-card {
-    background: rgba(255, 255, 255, 0.836);
+    background: rgba(137 137 137 / 29%);
     border-radius: 20px;
     padding: 2.5rem;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
@@ -429,13 +436,13 @@ h1 {
 .project-title {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    color: #333;
+    color: #ede9e9;
     font-weight: 600;
     padding-right: 3rem;
 }
 
 .project-description {
-    color: #666;
+    color: #dddcdc;
     margin-bottom: 1.5rem;
     line-height: 1.7;
     font-size: 1.05rem;
