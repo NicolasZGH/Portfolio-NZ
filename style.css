@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
@@ -11,6 +15,7 @@ body {
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+    padding-top: 70px;
 }
 
 /* Fondo animado */
@@ -22,7 +27,6 @@ body::before {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, #1a2446 0%, #1b1626 100%);
-    
     z-index: -2;
 }
 
@@ -43,44 +47,238 @@ body::after {
 }
 
 @keyframes gradientMove {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
+/* ============================================
+   NAVBAR
+============================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(21 27 46 / 95%);
+    backdrop-filter: blur(10px);
+    padding: 0.7rem 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(26, 36, 70, 0.98);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.navbar-logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.navbar-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.navbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #00BFFF, #1E90FF);
+    transition: width 0.3s ease;
+}
+
+.navbar-link:hover {
+    color: white;
+}
+
+.navbar-link:hover::after {
+    width: 100%;
+}
+
+.navbar-cta {
+    background: linear-gradient(135deg, #00BFFF, #1E90FF);
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+}
+
+.navbar-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 191, 255, 0.4);
+}
+
+/* Hamburger menu */
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.navbar-toggle span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ============================================
+   CONTAINER & HERO SECTION
+============================================ */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-/* Sección de perfil */
+.hero-section {
+    position: relative;
+    padding: 1rem 0 3rem;
+    margin-bottom: 2rem;
+}
+
+/* Decoraciones geométricas sutiles */
+.hero-decoration {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.deco-1 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #00BFFF, #1E90FF);
+    top: -50px;
+    right: 10%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.deco-2 {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #FFA500, #FF8C00);
+    bottom: 50px;
+    left: 5%;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ============================================
+   PROFILE SECTION
+============================================ */
 .profile-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 1rem;
     animation: fadeInUp 1s ease-out;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-picture-wrapper {
+    position: relative;
+    margin-bottom: -20px;
 }
 
 .profile-picture {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.247)); 
-    margin-bottom: -30px
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.247));
+    position: relative;
+    z-index: 2;
 }
 
+.profile-ring {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+/* ============================================
+   HEADER
+============================================ */
 header {
     text-align: center;
-    margin-bottom: 3rem;
     color: white;
+    position: relative;
+    z-index: 1;
 }
 
 h1 {
@@ -98,15 +296,89 @@ h1 {
     margin-bottom: 0.5rem;
 }
 
+.availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #86efac;
+    padding: 0.5rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+    animation: fadeInUp 1s ease-out 0.5s both;
+    backdrop-filter: blur(10px);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #86efac;
+    border-radius: 50%;
+    animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
 .intro-text {
     font-size: 1.1rem;
     color: #d8f5ffab;
     opacity: 0.8;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 1rem auto 0;
     animation: fadeInUp 1s ease-out 0.6s both;
 }
 
+/* ============================================
+   STATS SECTION
+============================================ */
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    background: linear-gradient(135deg, #00BFFF, #1E90FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ============================================
+   PROJECTS SECTION
+============================================ */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -250,6 +522,9 @@ h1 {
     background: linear-gradient(135deg, #3CB371, #2E8B57);
 }
 
+/* ============================================
+   CONTACT SECTION
+============================================ */
 .contact-section {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
@@ -287,6 +562,9 @@ h1 {
     opacity: 0.9;
 }
 
+/* ============================================
+   FOOTER
+============================================ */
 .footer {
     text-align: center;
     padding: 2rem;
@@ -295,6 +573,9 @@ h1 {
     font-size: 0.9rem;
 }
 
+/* ============================================
+   ANIMATIONS
+============================================ */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -306,145 +587,128 @@ h1 {
     }
 }
 
+/* ============================================
+   RESPONSIVE DESIGN
+============================================ */
 @media (max-width: 768px) {
-    .container {
-        padding: 1rem;
+    body { 
+        padding-top: 70px; 
+    }
+    
+    /* Navbar móvil */
+    .navbar-container { 
+        padding: 0 1rem; 
+    }
+    
+    .navbar-toggle {
+        display: flex;
     }
 
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    .subtitle {
-        font-size: 1.1rem;
-    }
-
-    .intro-text {
-        font-size: 1rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .project-card {
-        padding: 2rem;
-    }
-
-    .project-title {
-        font-size: 1.5rem;
-    }
-
-    .contact-section {
-        padding: 2rem;
-    }
-
-    .contact-section h2 {
-        font-size: 1.8rem;
-    }
-
-    .contact-info {
-        flex-direction: column;
-        gap: 1rem;
-    }
-}
-
-/* ... (mantén todo el CSS anterior hasta el media query) ... */
-
-@media (max-width: 768px) {
-    .container {
-        padding: 1rem;
-    }
-
-    .profile-picture {
-        width: 120px;
-        height: 120px;
-        margin-bottom: 0.5rem;
-    }
-
-    h1 {
-        font-size: 2.2rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .subtitle {
-        font-size: 1rem;
-        margin-bottom: 0.3rem;
-    }
-
-    .intro-text {
-        font-size: 0.95rem;
-        max-width: 90%;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .project-card {
-        padding: 1.5rem;
-        margin: 0 0.5rem;
-    }
-
-    .project-number {
-        width: 30px;
-        height: 30px;
-        font-size: 0.9rem;
-        top: 0.8rem;
-        right: 1rem;
-    }
-
-    .project-title {
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-        padding-right: 2rem;
-    }
-
-    .project-description {
-        font-size: 0.95rem;
-        margin-bottom: 1rem;
-    }
-
-    .tech-tag {
-        font-size: 0.75rem;
-        padding: 0.2rem 0.6rem;
-    }
-
-    .project-link {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.95rem;
+    .navbar-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
         width: 100%;
-        text-align: center;
-    }
-
-    .contact-section {
-        padding: 1.5rem;
-        margin: 2rem 0.5rem 0;
-    }
-
-    .contact-section h2 {
-        font-size: 1.5rem;
-    }
-
-    .contact-section p {
-        font-size: 0.95rem;
-    }
-
-    .contact-info {
+        height: calc(100vh - 70px);
+        background: rgba(26, 36, 70, 0.98);
+        backdrop-filter: blur(10px);
         flex-direction: column;
-        gap: 0.8rem;
-        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 2rem;
+        gap: 1.5rem;
+        transition: left 0.3s ease;
     }
 
-    .contact-item {
-        font-size: 0.95rem;
+    .navbar-menu.active {
+        left: 0;
     }
 
-    .footer {
-        padding: 1rem;
-        font-size: 0.8rem;
+    .navbar-link {
+        font-size: 1.2rem;
+        width: 100%;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-cta {
+        width: fit-content;
+        margin-top: 1rem;
+    }
+    
+    /* Hero section */
+    .deco-1, 
+    .deco-2 { 
+        display: none; 
+    }
+    
+    .container { 
+        padding: 1rem; 
+    }
+    
+    .profile-picture { 
+        width: 120px; 
+        height: 120px; 
+    }
+    
+    .profile-ring { 
+        width: 140px; 
+        height: 140px; 
+        top: -10px; 
+        left: -10px; 
+    }
+    
+    h1 { 
+        font-size: 2.2rem; 
+    }
+    
+    .subtitle { 
+        font-size: 1rem; 
+    }
+    
+    .intro-text { 
+        font-size: 0.95rem; 
+    }
+    
+    /* Stats */
+    .stats-container { 
+        gap: 1rem; 
+        margin-top: 1.5rem; 
+    }
+    
+    .stat-card { 
+        padding: 0.8rem 1.2rem; 
+    }
+    
+    .stat-number { 
+        font-size: 1.5rem; 
+    }
+    
+    .stat-label { 
+        font-size: 0.85rem; 
+    }
+    
+    /* Projects */
+    .projects-grid { 
+        grid-template-columns: 1fr; 
+        gap: 1.5rem; 
+    }
+    
+    .project-card { 
+        padding: 1.5rem; 
+    }
+    
+    .project-title { 
+        font-size: 1.3rem; 
+    }
+    
+    /* Contact */
+    .contact-section { 
+        padding: 1.5rem; 
+    }
+    
+    .contact-info { 
+        flex-direction: column; 
+        gap: 0.8rem; 
     }
 }
 
@@ -478,7 +742,6 @@ h1 {
     }
 }
 
-/* Añade esto para mejorar la legibilidad en móviles */
 @media (max-width: 400px) {
     .project-tech {
         justify-content: center;
