@@ -5,21 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Desarrollador Web</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#inicio" class="navbar-brand">
+                <img src="NZ-Logo-White.png" alt="Logo de Nicolás Zorrilla" class="navbar-logo">
+            </a>           
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="#inicio" class="navbar-link">Inicio</a></li>
+                <li><a href="#proyectos" class="navbar-link">Proyectos</a></li>
+                <li><a href="#contacto" class="navbar-link">Contacto</a></li>
+                <li><a href="#contacto" class="navbar-cta">Trabajemos juntos</a></li>
+            </ul>
+            
+            <div class="navbar-toggle" id="navbarToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
-        <div class="profile-section">
-            <img src="Logo2-W.png" alt="Foto de perfil de Nicolás Zorrilla" class="profile-picture">
+        <div class="hero-section" id="inicio">
+            <div class="hero-decoration deco-1"></div>
+            <div class="hero-decoration deco-2"></div>
+            
+            <div class="profile-section">
+                <div class="profile-picture-wrapper">
+                    <div class="profile-ring"></div>
+                    <img src="Logo2-W.png" alt="Foto de perfil de Nicolás Zorrilla" class="profile-picture">
+                </div>
+            </div>
+
+            <header>
+                <h1>Nicolás Zorrilla</h1>
+                <p class="subtitle">Diseñador UI/UX y Desarrollador Front-end</p>
+                
+                <div class="availability-badge">
+                    <span class="status-dot"></span>
+                    <span>Disponible para proyectos</span>
+                </div>
+                
+                <p class="intro-text">Presentación de algunos de mis proyectos desarrollados</p>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">4+</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Responsive</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Tecnologías</div>
+                    </div>
+                </div>
+            </header>
         </div>
 
-        <header>
-            <h1>Nicolás Zorrilla</h1>
-            <p class="subtitle">Diseñador UI/UX y Desarrollador Front-end</p>
-            <p class="intro-text">Presentación de algunos de mis proyectos desarrollados</p>
-        </header>
-
-        <div class="projects-grid">
+        <div class="projects-grid" id="proyectos">
             <div class="project-card">
                 <div class="project-number">1</div>
                 <h3 class="project-title">Página para Rotisería 🍔</h3>
@@ -73,7 +122,7 @@
             </div>
         </div>
 
-        <div class="contact-section">
+        <div class="contact-section" id="contacto">
             <h2>¿Interesado en trabajar juntos?</h2>
             <p>Me especializo en crear soluciones web personalizadas que impulsan el crecimiento de tu negocio</p>
             <div class="contact-info">
@@ -96,5 +145,43 @@
     <footer class="footer">
         <p>&copy; 2025 Mi Portfolio. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        const navbarToggle = document.getElementById('navbarToggle');
+        const navbarMenu = document.getElementById('navbarMenu');
+        const navbarLinks = document.querySelectorAll('.navbar-link, .navbar-cta');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        navbarToggle.addEventListener('click', () => {
+            navbarToggle.classList.toggle('active');
+            navbarMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navbarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navbarToggle.classList.remove('active');
+                navbarMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target)) {
+                navbarToggle.classList.remove('active');
+                navbarMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
