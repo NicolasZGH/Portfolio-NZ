@@ -600,7 +600,7 @@ h1 {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background: linear-gradient(135deg, #00BFFF, #1E90FF);
+    background: linear-gradient(135deg, #064f79, #257ea1);
     border: none;
     color: white;
     width: 55px;
@@ -613,12 +613,17 @@ h1 {
     font-size: 1.5rem;
     transition: all 0.3s ease;
     z-index: 999;
-    box-shadow: 0 4px 20px rgba(0, 191, 255, 0.4);
+    box-shadow: 0 4px 20px rgba(59, 201, 255, 0.35);
 }
 
 body.light-mode .theme-toggle-float {
-    background: linear-gradient(135deg, #0ea5e9, #0284c7);
-    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+background: linear-gradient(135deg, #58A9FF, #7AD9FF);
+box-shadow: 0 4px 20px rgba(90, 206, 255, 0.35);
+
+
+
+
+
 }
 
 .theme-toggle-float:hover {
@@ -971,5 +976,21 @@ body.light-mode .navbar-link {
     
     .project-link {
         padding: 0.7rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Botón de cambiar tema en móvil */
+    .theme-toggle-float {
+        top: 5.2rem;      /* Lo mueve debajo del navbar */
+        right: 1rem;
+        bottom: auto;     /* Anula el bottom original */
+        z-index: 9999;
+    }
+
+    /* Si tu navbar crece al abrir menú hamburguesa */
+    .navbar.scrolled + .theme-toggle-float {
+        top: 4.5rem;
     }
 }
