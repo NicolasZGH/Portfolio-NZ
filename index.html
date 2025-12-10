@@ -11,8 +11,13 @@
     <nav class="navbar">
         <div class="navbar-container">
             <a href="#inicio" class="navbar-brand">
-                <img src="NZ-Logo-White.png" alt="Logo de Nicolás Zorrilla" class="navbar-logo">
-            </a>           
+                <img src="NZ-Logo-White.png" 
+                    data-dark="NZ-Logo-White.png" 
+                    data-light="NZ-Logo-Black.png" 
+                    alt="Logo de Nicolás Zorrilla" 
+                    class="navbar-logo" 
+                    id="navbarLogo">
+            </a>        
             <ul class="navbar-menu" id="navbarMenu">
                 <li><a href="#inicio" class="navbar-link">Inicio</a></li>
                 <li><a href="#proyectos" class="navbar-link">Proyectos</a></li>
@@ -28,6 +33,11 @@
         </div>
     </nav>
 
+    <button class="theme-toggle-float" id="themeToggle" aria-label="Cambiar tema">
+        <span id="themeIcon">☀️</span>
+    </button>
+
+
     <div class="container">
         <div class="hero-section" id="inicio">
             <div class="hero-decoration deco-1"></div>
@@ -36,7 +46,12 @@
             <div class="profile-section">
                 <div class="profile-picture-wrapper">
                     <div class="profile-ring"></div>
-                    <img src="Logo2-W.png" alt="Foto de perfil de Nicolás Zorrilla" class="profile-picture">
+                    <img src="Logo2-W.png" 
+                        data-dark="Logo2-W.png" 
+                        data-light="Logo2-B.png" 
+                        alt="Foto de perfil de Nicolás Zorrilla" 
+                        class="profile-picture" 
+                        id="profilePicture">
                 </div>
             </div>
 
@@ -180,6 +195,45 @@
             if (!navbar.contains(e.target)) {
                 navbarToggle.classList.remove('active');
                 navbarMenu.classList.remove('active');
+            }
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const navbarLogo = document.getElementById('navbarLogo');
+        const profilePicture = document.getElementById('profilePicture');
+
+        // Función para cambiar las imágenes
+        function updateImages(theme) {
+            if (theme === 'light') {
+                navbarLogo.src = navbarLogo.getAttribute('data-light');
+                profilePicture.src = profilePicture.getAttribute('data-light');
+                themeIcon.textContent = '🌙';
+            } else {
+                navbarLogo.src = navbarLogo.getAttribute('data-dark');
+                profilePicture.src = profilePicture.getAttribute('data-dark');
+                themeIcon.textContent = '☀️';
+            }
+        }
+
+        // Verificar si hay un tema guardado
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            updateImages('light');
+        }
+
+        // Cambiar tema al hacer clic
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            
+            if (document.body.classList.contains('light-mode')) {
+                updateImages('light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                updateImages('dark');
+                localStorage.setItem('theme', 'dark');
             }
         });
     </script>
