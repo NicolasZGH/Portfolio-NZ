@@ -223,7 +223,7 @@ body::after {
 .deco-2 {
     width: 200px;
     height: 200px;
-    background: linear-gradient(135deg, #FFA500, #FF8C00);
+    background: linear-gradient(135deg, #0084ff, #FF8C00);
     bottom: 50px;
     left: 5%;
     animation: float 8s ease-in-out infinite reverse;
@@ -794,6 +794,229 @@ body.light-mode .navbar-menu {
 body.light-mode .navbar-link {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     color:#2e4e72
+}
+
+/* ============================================
+   LOGOS SECTION
+============================================ */
+.logos-section {
+    padding: 4rem 0;
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.logos-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+body.light-mode .logos-section h2 {
+    color: #0f172a;
+}
+
+.logos-subtitle {
+    color: #d8f5ffab;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+}
+
+body.light-mode .logos-subtitle {
+    color: #64748b;
+}
+
+.logos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.logo-card {
+    background: rgba(137, 137, 137, 0.29);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #3d2be2, #5165bb);
+}
+
+.logo-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode .logo-card {
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .logo-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.logo-image-wrapper {
+    width: 180px;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.logo-card:hover .logo-image-wrapper {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+body.light-mode .logo-image-wrapper {
+    background: rgba(14, 165, 233, 0.08);
+}
+
+body.light-mode .logo-card:hover .logo-image-wrapper {
+    background: rgba(14, 165, 233, 0.12);
+}
+
+.logo-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+    transition: all 0.3s ease;
+}
+
+.logo-card:hover .logo-image {
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
+}
+
+.logo-info {
+    text-align: center;
+    width: 100%;
+}
+
+.logo-title {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+body.light-mode .logo-title {
+    color: #0f172a;
+}
+
+.logo-description {
+    color: #dddcdc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+}
+
+body.light-mode .logo-description {
+    color: #475569;
+}
+
+.logo-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.logo-tag {
+    background: linear-gradient(135deg, #246dc0, #5a8aca);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.logo-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(46, 43, 226, 0.3);
+}
+
+/* Responsive para logos */
+@media (max-width: 768px) {
+    .logos-section {
+        padding: 2rem 0;
+    }
+    
+    .logos-section h2 {
+        font-size: 2rem;
+    }
+    
+    .logos-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .logo-card {
+        padding: 1.5rem;
+    }
+    
+    .logo-image-wrapper {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .logo-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logos-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .logo-image-wrapper {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .logo-title {
+        font-size: 1.2rem;
+    }
+    
+    .logo-description {
+        font-size: 0.9rem;
+    }
+}
+
+/* Añade scroll-margin-top para la sección de logos */
+#logos {
+    scroll-margin-top: 90px;
 }
 
 /* ============================================
