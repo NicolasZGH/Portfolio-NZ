@@ -6,7 +6,8 @@
     <title>Portfolio - Desarrollador Web</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="icon" type="image/png" href="NZ-Logo-Page.png">
+    <link rel="icon" href="NZ-Logo-Page.png">
+
 
 
 </head>
@@ -143,14 +144,12 @@
             </div>
         </div>
 
-        <!-- Añade esto después de la sección de proyectos y antes de la sección de contacto -->
 
 <div class="logos-section" id="logos">
     <h2>Logotipos Creados</h2>
     <p class="logos-subtitle">Identidad visual de marca: donde la creatividad se encuentra con la estrategia</p>
     
     <div class="logos-container">
-        <!-- Logo 1 - GalactusAmbaris -->
         <div class="logo-card">
             <div class="logo-image-wrapper">
                 <img src="logos/logo1.png" alt="GalactusAmbaris - Fusión de iniciales geométrica" class="logo-image">
@@ -167,7 +166,6 @@
             </div>
         </div>
 
-        <!-- Logo 2 - NaturalisticPhotos -->
         <div class="logo-card">
             <div class="logo-image-wrapper">
                 <img src="logos/logo2.png" alt="NaturalisticPhotos - Fusión naturaleza y tipografía" class="logo-image">
@@ -184,7 +182,6 @@
             </div>
         </div>
 
-        <!-- Logo 3 - CHM Producciones -->
         <div class="logo-card">
             <div class="logo-image-wrapper">
                 <img src="logos/logo3.png" alt="CHM Producciones - Símbolo musical moderno" class="logo-image">
@@ -201,7 +198,7 @@
             </div>
         </div>
 
-        <!-- Logo 4 - FATAL BIOW -->
+
         <div class="logo-card">
             <div class="logo-image-wrapper">
                 <img src="logos/logo4.png" alt="Fatal Blow - Logo urbano experimental" class="logo-image">
@@ -218,7 +215,7 @@
             </div>
         </div>
 
-        <!-- Logo 5 - NZ Personal -->
+
         <div class="logo-card">
             <div class="logo-image-wrapper">
                 <img src="logos/logo5.png" alt="NZ - Marca personal minimalista" class="logo-image">
@@ -235,7 +232,6 @@
             </div>
         </div>
 
-        <!-- Logo 6 - Foxsound -->
         <div class="logo-card">
             <div class="logo-image-wrapper">
                 <img src="logos/logo6.png" alt="Foxsound - Identidad musical abstracta" class="logo-image">
@@ -324,7 +320,7 @@
     const navbarLogo = document.getElementById('navbarLogo');
     const profilePicture = document.getElementById('profilePicture');
 
-    // Cambia las imágenes según el tema
+
     function updateImages(theme) {
         if (theme === 'light') {
             navbarLogo.src = navbarLogo.getAttribute('data-light');
